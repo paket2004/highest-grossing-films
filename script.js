@@ -10,8 +10,8 @@ function fetchFilms() {
             return response.json();
         })
         .then(data => {
-            filmsData = data; // Store the data globally
-            renderFilms(filmsData); // Render all films initially
+            filmsData = data;
+            renderFilms(filmsData);
         })
         .catch(error => {
             console.error('Error fetching films:', error);
@@ -22,7 +22,7 @@ function fetchFilms() {
 // Render films in the table
 function renderFilms(films) {
     const tableBody = document.querySelector('#films-table tbody');
-    tableBody.innerHTML = ''; // Clear existing rows
+    tableBody.innerHTML = '';
 
     films.forEach(film => {
         const row = document.createElement('tr');
@@ -40,7 +40,7 @@ function renderFilms(films) {
 // Filter films by release year
 function filterFilmsByYear(year) {
     if (!year) {
-        return filmsData; // Return all films if no year is provided
+        return filmsData;
     }
     return filmsData.filter(film => film.release_year == year);
 }
@@ -54,9 +54,8 @@ document.getElementById('filter-button').addEventListener('click', () => {
 
 // Event listener for the reset button
 document.getElementById('reset-button').addEventListener('click', () => {
-    document.getElementById('year-filter').value = ''; // Clear the filter input
-    renderFilms(filmsData); // Render all films
+    document.getElementById('year-filter').value = '';
+    renderFilms(filmsData);
 });
 
-// Initial fetch and render
 fetchFilms();
