@@ -1,4 +1,4 @@
-let filmsData = []; // Store the fetched films data globally
+let filmsData = [];
 
 // Fetch films data and populate the table
 function fetchFilms() {
